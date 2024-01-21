@@ -46,7 +46,7 @@ $('.kvirisdge').on('click', function (event) {
     const $myData = $(this).attr("date");
 
     // Save data to Supabase
-    saveToSupabase($myData);
+    // saveToSupabase($myData);
 
     // Apply glow and grow effect
     const moonImage = $('#moon' + $myData);
@@ -66,24 +66,7 @@ $('.kvirisdge').on('click', function (event) {
     }, 5000); // Adjust the delay as needed
 });
 
-// function saveToSupabase(date) {
-   
-
-//     supabase
-//         .from('datefor')
-//         .upsert([
-//             {
-//                 date:date, // Convert the date to JavaScript Date object
-//                 // Add other relevant data here
-//             },
-//         ])
-//         .then(response => {
-//             console.log('Data saved to Supabase:', response);
-//         })
-//         .catch(error => {
-//             console.error('Error saving data to Supabase:', error);
-//         });
-// }
+// git
 // function moveButton() {
 //     var button = document.getElementById('movingButton');
 //     button.style.right = '-50px'; // Reset position
