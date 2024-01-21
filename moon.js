@@ -38,7 +38,7 @@ function openModal() {
         myModal.show();
     }, 500);
 }
-import supabase from 'supabaseConfig.js'
+const supabase = require('./supabaseConfig');
 
 $('.kvirisdge').on('click', function (event) {
     event.preventDefault();
