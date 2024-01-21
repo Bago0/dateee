@@ -30,7 +30,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>mmm</title>
+    <title>dateee</title>
 </head>
 
 <body class="body">
@@ -84,22 +84,26 @@
 //         console.error('There was a problem with the fetch operation:', error);
 //     });
 // }
-$('.kvirisdge').on('click', function(){
-    const $myData = $(this).data("date");
-    $.post($(location).attr('href'), {dateinfo: $myData})
-    .done(function (result) {
-        if (typeof result === 'object') {
-            if(parseInt(result.status, 10) === 1){
+$('.kvirisdge').on('click', function(event) {
+    event.preventDefault();
+
+    const $myData = $(this).attr("date");
+    
+    $.post('/api/save_info', { dateinfo: $myData })
+        .done(function(result) {
+            if (typeof result === 'object') {
+                if (parseInt(result.status, 10) === 1) {
+                    // Handle success if needed
+                } else {
+                    alert(result.msg);
+                }
             } else {
-                alert(result.msg);
+                alert("Error! Incorrect response from server!");
             }
-        } else {
-            alert("Error! incorrect response from server!");
-        }
-    }, "json")
-    .fail(function(){
-        alert("Error! incorrect response from server!");
-    });
+        })
+        .fail(function() {
+            alert("Error! Incorrect response from server!");
+        });
 });
 
 </script>
