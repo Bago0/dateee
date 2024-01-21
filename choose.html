@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
+        .body {
             background-color: black;
             color: white;
         }
@@ -35,6 +35,10 @@
         }
 
         .glow {
+            z-index: 999;
+            position: fixed;
+            top: 0;
+            left: 0;
             filter: brightness(1.5);
         }
 
@@ -68,7 +72,7 @@
     <title>dateee</title>
 </head>
 
-<body>
+<body class="body">
     <input type="hidden" id="addDate" name="addDate" value="addDate" />
     <div class="container h-100">
         <div class="h-100 d-flex align-items-center w-100 justify-content-center">
@@ -81,14 +85,14 @@
                         <div class="col-5">
                             <div class="image-container">
                                 <img src="moon27.jpg" class="w-100 h-100" alt="moonin27feb" id="moon27">
-                                <a href="#" class="btn kvirisdge" id="shabati27" date="shabati27"><h1>შაბათი
+                                <a href="#" class="btn kvirisdge" id="shabati27" date="27"><h1>შაბათი
                                         საღამო</h1></a>
                             </div>
                         </div>
                         <div class="col-5">
                             <div class="image-container">
-                                <img src="moon28.jpg" class="w-100 h-100" alt="moonin28feb">
-                                <a href="#" class="btn kvirisdge" id="kvira28" date="kvira28"><h1>კვირა
+                                <img src="moon28.jpg" class="w-100 h-100" alt="moonin28feb" id="moon28">
+                                <a href="#" class="btn kvirisdge" id="kvira28" date="28"><h1>კვირა
                                         საღამო</h1></a>
                             </div>
                         </div>
@@ -99,8 +103,8 @@
     </div>
 
     <div class="page-overlay" id="page-overlay">
-        <div class="thanks-message">
-            <p>Thanks answer sent, wait message on Instagram and hearts ❤️</p>
+        <div class="thanks-message d-flex justify-content-center align-items-center">
+            <p>მადლობააა პასუხი მიღებულია, დაელოდე მესიჯს ინსტაგრამზე! ❤️❤️❤️</p>
         </div>
     </div>
 
@@ -114,7 +118,7 @@
             const moonImage = $('#moon' + $myData);
             moonImage.addClass('glow');
             setTimeout(() => {
-                moonImage.css('transform', 'scale(1.5)'); // Adjust the scale factor as needed
+                moonImage.css('transform', 'scale(5.5)'); // Adjust the scale factor as needed
                 setTimeout(() => {
                     $('#page-overlay').fadeIn(500);
                 }, 500);
