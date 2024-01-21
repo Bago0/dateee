@@ -17,10 +17,13 @@
             top: 50%;
             right: -50px;
             transform: translateY(-50%);
-            background-color: #007bff;
             color: #fff;
             border: none;
-            padding: 10px 20px;
+            padding: 20px;
+            background-color: red;
+            box-shadow: 10px 10px 10px;
+            font-size: 24px;
+            font-weight: bold;
             cursor: pointer;
             transition: opacity 0.5s ease-in-out;
             z-index: 999;
@@ -80,8 +83,8 @@
                             aria-label="Close" onclick="moveButton()"></button>
                     </div>
                     <div class="modal-body">
-                        <p>არააა ღილაკს ეძებ???? ნამდვილი არა ღილაკი  წესით არ არსებოს, მაგრამ დაელოდე ის 10 წამში
-                            გამოჩნდება, მანამდე დაფიქრდი</p>
+                        <p>არააა ღილაკს ეძებ???? ნამდვილი არა ღილაკი  წესით არ არსებოს, მაგრამ დაელოდე ის მალე
+                            გამოჩნდება როცა ამას დახურავ, მანამდე დაფიქრდი</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-mdb-ripple-init
@@ -100,7 +103,7 @@
 
         function moveButton() {
             var button = document.createElement('button');
-            button.className = 'moving-button btn btn-primary';
+            button.className = 'moving-button btn btn-primary p-3';
             button.innerHTML = 'არააა თქო!!!!';
             document.body.appendChild(button);
 
@@ -111,18 +114,18 @@
 
             setTimeout(function () {
                 button.style.opacity = '0'; // Hide the button
-            }, 1000); // Change the time as needed
+            }, 200); // Change the time as needed
 
             setTimeout(function () {
                 button.remove(); // Remove the button from the DOM
-            }, 300); // Change the time as needed
+            }, 100); // Change the time as needed
 
             setTimeout(function () {
                 var secondModal = new bootstrap.Modal(document.getElementById('secondModal'));
                 secondModal.show();
-            }, 10000);   
+            }, 9000);   
             
-            setInterval(moveButton, 3000);
+            setInterval(moveButton, 1500);
             
         }
 
