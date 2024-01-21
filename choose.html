@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .body {
+            background-color: black;
+            color: white;
+        }
+
+        .image-container {
+            position: relative;
+        }
+
+        .image-container a {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <title>mmm</title>
+</head>
+
+<body class="body">
+<input type="hidden" id="addDate" name="addDate" value="addDate" />
+    <div class="container h-100">
+        <div class="h-100 d-flex align-items-center w-100 justify-content-center">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <h1 class="text-center">აირჩიე დღე</h1>
+                </div>
+                <div class="col-10">
+                    <div class="row justify-content-between">
+                        <div class="col-5">
+                            <div class="image-container">
+                                <img src="moon27.jpg" class="w-100 h-100" alt="moonin27feb">
+                                <a href="#" class="btn kvirisdge"  id="shabati27" date="shabati27"><h1>შაბათი საღამო</h1></a>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="image-container">
+                                <img src="moon28.jpg" class="w-100 h-100" alt="moonin28feb">
+                                <a href="#" class="btn kvirisdge"  id="kvira28" date="kvira28"><h1>კვირა საღამო</h1></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+//     function saveInfo(day) {
+//     fetch('save_info.php', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/x-www-form-urlencoded',
+//         },
+//         body: 'selected_day=' + day,
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.text();
+//     })
+//     .then(data => {
+//         console.log(data);
+//     })
+//     .catch(error => {
+//         console.error('There was a problem with the fetch operation:', error);
+//     });
+// }
+$('.kvirisdge').on('click', function(){
+    const $myData = $(this).data("date");
+    $.post($(location).attr('href'), {dateinfo: $myData})
+    .done(function (result) {
+        if (typeof result === 'object') {
+            if(parseInt(result.status, 10) === 1){
+            } else {
+                alert(result.msg);
+            }
+        } else {
+            alert("Error! incorrect response from server!");
+        }
+    }, "json")
+    .fail(function(){
+        alert("Error! incorrect response from server!");
+    });
+});
+
+</script>
+</html>

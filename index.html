@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .moving-button {
+            position: fixed;
+            top: 50%;
+            right: -50px;
+            transform: translateY(-50%);
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 999;
+        }
+    </style>
+    <script src="moon.js"></script>
+    <title>date?</title>
+</head>
+
+<body>
+    <div class="container h-100">
+        <div class="h-100 d-flex align-items-center w-100 justify-content-center">
+            <div class="row justify-content-center ">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">წამოხვალ ჩემთან ერთად სპექტაკლზე?</h5>
+                            <hr>
+                            <div class="d-flex w-100 justify-content-center">
+                                <img src="tenor.gif" id="content" width="255" height="209" alt="butterfly">
+                            </div>
+                            <hr>
+                            <div class="row justify-content-between">
+                                <div class="col"><a href="choose.html" type="button" class="btn btn-primary float-start" data-mdb-ripple-init><h6>კი აბა რაა</h6></a></div>
+                            
+                                <div class="col"><button type="button" class="btn btn-primary  float-end" data-mdb-ripple-init
+                                    onclick="openModal()"><h6>აუ ვერაა!!</h6></button></div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="secondModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-mdb-ripple-init data-bs-dismiss="modal"
+                            aria-label="Close" onclick="refreshButton()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>ეეეე ტყულად ცდილობ ვერ დაიჭერ მიდი ახლა დათანხმდი არ გამაგიჟო</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-mdb-ripple-init
+                            data-bs-dismiss="modal" onclick="refreshButton()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="myModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-mdb-ripple-init data-bs-dismiss="modal"
+                            aria-label="Close" onclick="moveButton()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>არააა ღილაკს ეძებ???? ნამდვილი არა ღილაკი  წესით არ არსებოს, მაგრამ დაელოდე ის 10 წამში
+                            გამოჩნდება, მანამდე დაფიქრდი</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-mdb-ripple-init
+                            data-bs-dismiss="modal" onclick="moveButton()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+            myModal.show();
+        }
+
+        function moveButton() {
+            var button = document.createElement('button');
+            button.className = 'moving-button btn btn-primary';
+            button.innerHTML = 'არააა თქო!!!!';
+            document.body.appendChild(button);
+
+            var x = Math.random() * (window.innerWidth - button.offsetWidth);
+            var y = Math.random() * (window.innerHeight - button.offsetHeight);
+            button.style.right = x + 'px';
+            button.style.top = y + 'px';
+
+            setTimeout(function () {
+                button.style.opacity = '0'; // Hide the button
+            }, 1000); // Change the time as needed
+
+            setTimeout(function () {
+                button.remove(); // Remove the button from the DOM
+            }, 300); // Change the time as needed
+
+            setTimeout(function () {
+                var secondModal = new bootstrap.Modal(document.getElementById('secondModal'));
+                secondModal.show();
+            }, 10000);   
+            
+            setInterval(moveButton, 3000);
+            
+        }
+
+        function refreshButton(){
+            window.location.reload();
+        }
+
+        // Repeat moveButton every 3 seconds
+        
+
+    </script>
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
