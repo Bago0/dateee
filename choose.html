@@ -5,13 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .body {
+        body {
             background-color: black;
             color: white;
         }
 
         .image-container {
             position: relative;
+            overflow: hidden; /* Hide overflowing content during animation */
+        }
+
+        .image-container img {
+            transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
         }
 
         .image-container a {
@@ -21,6 +26,36 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: white;
+            text-decoration: none;
+            transition: color 0.5s ease-in-out;
+        }
+
+        .image-container a:hover {
+            color: #ffcc00; /* Change color on hover */
+        }
+
+        .glow {
+            filter: brightness(1.5);
+        }
+
+        .page-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 1000;
+            color: white;
+        }
+
+        .thanks-message {
+            font-size: 2em;
+            margin-bottom: 20px;
         }
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -33,8 +68,8 @@
     <title>dateee</title>
 </head>
 
-<body class="body">
-<input type="hidden" id="addDate" name="addDate" value="addDate" />
+<body>
+    <input type="hidden" id="addDate" name="addDate" value="addDate" />
     <div class="container h-100">
         <div class="h-100 d-flex align-items-center w-100 justify-content-center">
             <div class="row justify-content-center">
@@ -45,14 +80,16 @@
                     <div class="row justify-content-between">
                         <div class="col-5">
                             <div class="image-container">
-                                <img src="moon27.jpg" class="w-100 h-100" alt="moonin27feb">
-                                <a href="#" class="btn kvirisdge"  id="shabati27" date="shabati27"><h1>შაბათი საღამო</h1></a>
+                                <img src="moon27.jpg" class="w-100 h-100" alt="moonin27feb" id="moon27">
+                                <a href="#" class="btn kvirisdge" id="shabati27" date="shabati27"><h1>შაბათი
+                                        საღამო</h1></a>
                             </div>
                         </div>
                         <div class="col-5">
                             <div class="image-container">
                                 <img src="moon28.jpg" class="w-100 h-100" alt="moonin28feb">
-                                <a href="#" class="btn kvirisdge"  id="kvira28" date="kvira28"><h1>კვირა საღამო</h1></a>
+                                <a href="#" class="btn kvirisdge" id="kvira28" date="kvira28"><h1>კვირა
+                                        საღამო</h1></a>
                             </div>
                         </div>
                     </div>
@@ -61,30 +98,41 @@
         </div>
     </div>
 
+    <div class="page-overlay" id="page-overlay">
+        <div class="thanks-message">
+            <p>Thanks answer sent, wait message on Instagram and hearts ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        $('.kvirisdge').on('click', function (event) {
+            event.preventDefault();
+
+            const $myData = $(this).attr("date");
+
+            // Apply glow and grow effect
+            const moonImage = $('#moon' + $myData);
+            moonImage.addClass('glow');
+            setTimeout(() => {
+                moonImage.css('transform', 'scale(1.5)'); // Adjust the scale factor as needed
+                setTimeout(() => {
+                    $('#page-overlay').fadeIn(500);
+                }, 500);
+            }, 500);
+
+            // Simulate waiting for a message
+            setTimeout(() => {
+                $('#page-overlay').fadeOut(500);
+                // Reset the moon image styles
+                moonImage.removeClass('glow').css('transform', 'scale(1)');
+            }, 5000); // Adjust the delay as needed
+        });
+    </script>
 </body>
-<script>
-//     function saveInfo(day) {
-//     fetch('save_info.php', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/x-www-form-urlencoded',
-//         },
-//         body: 'selected_day=' + day,
-//     })
-//     .then(response => {
-//         if (!response.ok) {
-//             throw new Error('Network response was not ok');
-//         }
-//         return response.text();
-//     })
-//     .then(data => {
-//         console.log(data);
-//     })
-//     .catch(error => {
-//         console.error('There was a problem with the fetch operation:', error);
-//     });
-// }
-$('.kvirisdge').on('click', function(event) {
+
+</html>
+
+<!-- $('.kvirisdge').on('click', function(event) {
     event.preventDefault();
 
     const $myData = $(this).attr("date");
@@ -107,4 +155,4 @@ $('.kvirisdge').on('click', function(event) {
 });
 
 </script>
-</html>
+</html> -->
