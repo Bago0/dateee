@@ -27,6 +27,14 @@ module.exports = async (req, res) => {
       console.error(error);
       res.status(500).send('Internal Server Error');
     }
+  } else if (req.method === 'GET_LOGS') {  // New endpoint for retrieving logs
+    try {
+      const logData = fs.readFileSync('selected_dates.log', 'utf-8');
+      res.status(200).send(logData);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
   } else {
     res.status(405).send('Method Not Allowed');
   }
