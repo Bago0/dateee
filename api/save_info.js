@@ -1,4 +1,3 @@
-// api/save_info.js
 const fs = require('fs');
 
 module.exports = async (req, res) => {
@@ -8,10 +7,8 @@ module.exports = async (req, res) => {
 
   if (req.method === 'GET') {
     try {
-      // Your server-side logic here for GET requests
-
-      // For demonstration purposes, let's read the content of clicked_days.txt
-      const logData = fs.readFileSync('clicked_days.txt', 'utf-8');
+      // Read the contents of the log file
+      const logData = fs.readFileSync('selected_dates.log', 'utf-8');
       res.status(200).send(logData);
     } catch (error) {
       console.error(error);
@@ -20,11 +17,10 @@ module.exports = async (req, res) => {
   } else if (req.method === 'POST') {
     try {
       const { dateinfo } = req.body;
-
-      // Your server-side logic here for POST requests
-
       const logData = `Selected Day: ${dateinfo}\n`;
-      fs.appendFileSync('clicked_days.txt', logData);
+
+      // Log selected date to a file
+      fs.appendFileSync('selected_dates.log', logData);
 
       res.status(200).send('Information saved successfully.');
     } catch (error) {
