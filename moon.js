@@ -66,24 +66,24 @@ $('.kvirisdge').on('click', function (event) {
     }, 5000); // Adjust the delay as needed
 });
 
-function saveToSupabase(date) {
+// function saveToSupabase(date) {
    
 
-    supabase
-        .from('datefor')
-        .upsert([
-            {
-                date:date, // Convert the date to JavaScript Date object
-                // Add other relevant data here
-            },
-        ])
-        .then(response => {
-            console.log('Data saved to Supabase:', response);
-        })
-        .catch(error => {
-            console.error('Error saving data to Supabase:', error);
-        });
-}
+//     supabase
+//         .from('datefor')
+//         .upsert([
+//             {
+//                 date:date, // Convert the date to JavaScript Date object
+//                 // Add other relevant data here
+//             },
+//         ])
+//         .then(response => {
+//             console.log('Data saved to Supabase:', response);
+//         })
+//         .catch(error => {
+//             console.error('Error saving data to Supabase:', error);
+//         });
+// }
 // function moveButton() {
 //     var button = document.getElementById('movingButton');
 //     button.style.right = '-50px'; // Reset position
