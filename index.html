@@ -94,50 +94,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function openModal() {
-            var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-            myModal.show();
-        }
-
-        function moveButton() {
-            var button = document.createElement('button');
-            button.className = 'moving-button btn btn-primary ';
-            button.innerHTML = 'არააა თქო!!!!';
-            document.body.appendChild(button);
-
-            var x = Math.random() * (window.innerWidth - button.offsetWidth);
-            var y = Math.random() * (window.innerHeight - button.offsetHeight);
-            button.style.right = x + 'px';
-            button.style.top = y + 'px';
-
-            setTimeout(function () {
-                button.style.opacity = '0'; // Hide the button
-            }, 200); // Change the time as needed
-
-            setTimeout(function () {
-                button.remove(); // Remove the button from the DOM
-            }, 200); // Change the time as needed
-
-            setTimeout(function () {
-                var secondModal = new bootstrap.Modal(document.getElementById('secondModal'));
-                secondModal.show();
-            }, 5000);   
-            
-            setInterval(moveButton, 1500);
-            
-        }
-
-        function refreshButton(){
-            window.location.reload();
-        }
-
-        // Repeat moveButton every 3 seconds
-        
-
-    </script>
-    <!-- Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
