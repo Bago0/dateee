@@ -103,14 +103,27 @@
         </div>
     </div>
 
-    <div class="page-overlay" id="page-overlay">
+    <div class="page-overlay" id="page-overlay27">
         <div class="thanks-message d-flex justify-content-center align-items-center">
-            <p>მადლობააა პასუხი მიღებულია, დაელოდე მესიჯს ინსტაგრამზე! ❤️❤️❤️</p>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12"><p>ძალიანაც კარგი! ეს ან დაასკანერე ან დაასქრინშოთე და ჩამიგდე❤️❤️❤️</p></div>
+                <div class="col-12"><img src="27.png" class="w-auto" alt="moonin27feb" id="moon27"></div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <div class="page-overlay" id="page-overlay28">
+        <div class="thanks-message d-flex justify-content-center align-items-center">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12"><p>ძალიანაც კარგი! ეს ან დაასკანერე ან დაასქრინშოთე და ჩამიგდე❤️❤️❤️</p></div>
+                <div class="col-12"><img src="28.png" class="w-auto" alt="moonin27feb" id="moon27"></div>
+            </div>
         </div>
     </div>
 
     <script>
-        $('.kvirisdge').on('click', function (event) {
+       $('.kvirisdge').on('click', function (event) {
             event.preventDefault();
 
             const $myData = $(this).attr("date");
@@ -121,13 +134,13 @@
             setTimeout(() => {
                 moonImage.css('transform', 'scale(5.5)'); // Adjust the scale factor as needed
                 setTimeout(() => {
-                    $('#page-overlay').fadeIn(500);
+                    $('#page-overlay' + $myData).fadeIn(500);
                 }, 500);
             }, 500);
 
             // Simulate waiting for a message
             setTimeout(() => {
-                $('#page-overlay').fadeOut(500);
+                $('#page-overlay' + $myData).fadeOut(500);
                 // Reset the moon image styles
                 moonImage.removeClass('glow').css('transform', 'scale(1)');
             }, 5000); // Adjust the delay as needed
